@@ -42,4 +42,16 @@ public class InventoryTest {
 
         System.out.println(guitar);
     }
+
+    @Test
+    public void guitarCanBeSearchedTest(){
+        inventory.addGuitar("012",5000.00,"Fender","Acoustic",
+                "Acoustic","wood","Wood");
+        inventory.addGuitar("034",9000.00,"Fender","Acoustic",
+                "Acoustic","wood","Wood");
+        inventory.addGuitar("050",50000.00,"Fender","Acoustic",
+                "Acoustic","wood","Wood");
+
+      //  Guitar guitar =  inventory. searchGuitar();
+    }
 }

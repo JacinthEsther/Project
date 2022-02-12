@@ -24,4 +24,10 @@ public class Inventory {
         }
         throw new IllegalArgumentException("Serial Number not available");
     }
+
+//    public Guitar searchGuitar() {
+//        for (Guitar guitar: guitars){
+//
+//        }
+//    }
 }
