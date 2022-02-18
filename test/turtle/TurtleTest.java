@@ -20,7 +20,6 @@ public class TurtleTest {
 
     @Test
     public void turtleHasAPenTest(){
-      //  Turtle turtle = new Turtle();
        Pen pen = turtle.getPen();
        assertNotNull(pen);
     }
@@ -30,10 +29,22 @@ public class TurtleTest {
         assertSame(pen.getState(),UP);
     }
     @Test
-    public void turtleCanMovePenDown(){
+    public void turtleCanMovePenDownTest(){
         Pen pen = turtle.getPen();
         assertSame(pen.getState(),UP);
         turtle.penDown();
         assertSame(turtle.getPen().getState(),DOWN);
+    }
+    @Test
+    public void turtleCanMovePenUpTest(){
+        turtle.penDown();
+        assertSame(turtle.getPen().getState(),DOWN);
+        turtle.penUp();
+        assertSame(turtle.getPen().getState(),UP);
+    }
+
+    @Test
+    public void turtleCanTurnRightWhileFacingEast(){
+        assertSame(turtle.getCurrentDirection(),Direction.EAST);
     }
 }

@@ -9,4 +9,12 @@ public class Turtle {
     public void penDown() {
         biro.setState(PenState.DOWN);
     }
+
+    public void penUp() {
+        biro.setState(PenState.UP);
+    }
+
+    public Direction getCurrentDirection() {
+        return EAST;
+    }
 }
