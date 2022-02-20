@@ -38,12 +38,36 @@ public class Turtle {
 
     public void move(int noOfSteps) {
         if(currentDirection == EAST) increaseColumnBy(noOfSteps-1);
+       else if(currentDirection == SOUTH) increaseRowBy(noOfSteps - 1);
+       else if(currentDirection == WEST) decreaseColumnBy(noOfSteps - 1);
+       else if(currentDirection == NORTH) decreaseRowBy(noOfSteps - 1);
     }
 
     private void increaseColumnBy(int increase) {
         turtlePosition.setColumn(turtlePosition.getColumn() + increase);
     }
+     private void decreaseColumnBy(int decrease) {
+        turtlePosition.setColumn(turtlePosition.getColumn() - decrease);
+    }
+
     public TurtlePosition getTurtlePosition() {
         return turtlePosition;
+    }
+    private void increaseRowBy(int increase){
+        int currentFlow = turtlePosition.getRow();
+        turtlePosition.setRow(currentFlow + increase);
+    }
+    private void decreaseRowBy(int decrease){
+        int currentFlow = turtlePosition.getRow();
+        turtlePosition.setRow(currentFlow - decrease);
+    }
+
+    public void turnLeft() {
+        switch(currentDirection){
+            case EAST-> face(NORTH);
+            case SOUTH-> face(EAST);
+            case WEST-> face(SOUTH);
+            case NORTH-> face(WEST);
+        }
     }
 }
