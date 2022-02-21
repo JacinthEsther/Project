@@ -79,14 +79,14 @@ public class TurtleTest {
    assertEquals(expected, turtle.getTurtlePosition());
     }
 
-@Test
+   @Test
     public void turtleCanMoveWhileFacingSouthTest(){
         turtle.move(5);
         turtle.turnRight();
         turtle.move(5);
         TurtlePosition expected = new TurtlePosition(4,4);
         assertEquals(expected, turtle.getTurtlePosition());
-}
+  }
 
 
 
@@ -112,6 +112,155 @@ public class TurtleTest {
     TurtlePosition expected = new TurtlePosition(0,0);
     assertEquals(expected, turtle.getTurtlePosition());
 }
+   @Test
+    public void turtleCanTurnLeftWhileFacingNorth(){
+        assertSame(turtle.getCurrentDirection(), EAST);
+        turtle.turnLeft();
+        assertSame(NORTH, turtle.getCurrentDirection());
 
+   }
+   @Test
+   public void turtleCanMoveLeftWhileFacingWest(){
+        turtle.move(5);
+        turtle.turnLeft();
+        turtle.turnLeft();
+       turtle.move(5);
+       TurtlePosition expected = new TurtlePosition(0,0);
+        assertEquals(expected, turtle.getTurtlePosition());
+   }
+   @Test
+   public void turtleCanMoveLeftWhileFacingSouth(){
+       turtle.move(5);
+       turtle.turnLeft();
+       turtle.turnLeft();
+       turtle.move(5);
+       turtle.turnLeft();
+       turtle.move(5);
+       TurtlePosition expected = new TurtlePosition(4,0);
+       assertEquals(expected, turtle.getTurtlePosition());
+   }
+   @Test
+   public void turtleCanMoveLeftWhileFacingEast(){
+       turtle.move(5);
+       turtle.turnLeft();
+       turtle.turnLeft();
+       turtle.move(5);
+       turtle.turnLeft();
+       turtle.move(5);
+       turtle.turnLeft();
+       turtle.move(5);
+       TurtlePosition expected = new TurtlePosition(4,4);
+       assertEquals(expected, turtle.getTurtlePosition());
+   }
+ @Test
+   public void turtleCanMoveLeftWhileFacingNorth(){
+       turtle.move(5);
+       turtle.turnLeft();
+       turtle.turnLeft();
+       turtle.move(5);
+       turtle.turnLeft();
+       turtle.move(5);
+       turtle.turnLeft();
+       turtle.move(5);
+     turtle.turnLeft();
+     turtle.move(5);
+       TurtlePosition expected = new TurtlePosition(0,4);
+       assertEquals(expected, turtle.getTurtlePosition());
+   }
+@Test
+   public void turtleCanMoveLeftFromEast(){
+       turtle.move(5);
+       turtle.turnLeft();
+       turtle.turnLeft();
+       turtle.move(5);
+       turtle.turnLeft();
+       turtle.move(5);
+       turtle.turnLeft();
+       turtle.move(5);
+     turtle.turnLeft();
+     turtle.move(5);
+     turtle.turnLeft();
+     turtle.move(5);
+       TurtlePosition expected = new TurtlePosition(0,0);
+       assertEquals(expected, turtle.getTurtlePosition());
+   }
+
+   @Test
+    public void turtleCanTurnLeftWhileFacingWest(){
+        assertSame(turtle.getCurrentDirection(), EAST);
+        for (int i = 0; i < 2; i++) {
+            turtle.turnLeft();
+        }
+        assertSame(WEST, turtle.getCurrentDirection());
+
+   }
+ @Test
+    public void turtleCanTurnLeftWhileFacingSouth(){
+        assertSame(turtle.getCurrentDirection(), EAST);
+        for (int i = 0; i < 3; i++) {
+            turtle.turnLeft();
+        }
+        assertSame(SOUTH, turtle.getCurrentDirection());
+
+   }
+@Test
+    public void turtleCanTurnLeftWhileFacingEast(){
+        assertSame(turtle.getCurrentDirection(), EAST);
+        for (int i = 0; i < 4; i++) {
+            turtle.turnLeft();
+        }
+        assertSame(EAST, turtle.getCurrentDirection());
+   }
+
+   @Test
+    public void turtleCanDrawWhileMovingEast(){
+      turtle.move(5);
+      assertArrayEquals(new String[][]{{"-","-","-","-","-"},{null,null,null,null,null},
+              {null,null,null,null,null}, {null,null,null,null,null},
+              {null,null,null,null,null}},turtle.getTurtleArray());
+   }
+
+    @Test
+    public void turtleCanDrawWhileMovingSouth(){
+        turtle.move(5);
+        turtle.turnRight();
+        turtle.move(5);
+      assertArrayEquals(new String[][]{{"-","-","-","-","-"},{null,null,null,null,"-"},
+              {null,null,null,null,"-"}, {null,null,null,null,"-"},
+              {null,null,null,null,"-" }},turtle.getTurtleArray());
+   }
+
+    @Test
+    public void turtleCanDrawWhileMovingWest(){
+        turtle.move(5);
+        turtle.turnRight();
+        turtle.move(5);
+        turtle.turnRight();
+        turtle.move(5);
+        assertArrayEquals(new String[][]{{"-","-","-","-","-"},{null,null,null,null,"-"},
+                {null,null,null,null,"-"}, {null,null,null,null,"-"},
+                {"-","-","-","-","-" }},turtle.getTurtleArray());
+    }
+    @Test
+    public void turtleCanDrawWhileMovingNorth(){
+        turtle.move(5);
+        turtle.turnRight();
+        turtle.move(5);
+        turtle.turnRight();
+        turtle.move(5);
+        turtle.turnRight();
+        turtle.move(5);
+        assertArrayEquals(new String[][]{{"-","-","-","-","-"},{"-",null,null,null,"-"},
+                {"-",null,null,null,"-"}, {"-",null,null,null,"-"},
+                {"-","-","-","-","-" }},turtle.getTurtleArray());
+    }
+    @Test
+    public void turtleCannotDrawWhenPenIsUp(){
+        turtle.penUp();
+        turtle.move(5);
+        assertArrayEquals(new String[][]{{null,null,null,null,null},{null,null,null,null,null},
+                {null,null,null,null,null}, {null,null,null,null,null},
+                {null,null,null,null,null}},turtle.getTurtleArray());
+    }
 
 }
