@@ -64,6 +64,7 @@ public class Turtle {
         }
     }
 
+
     private void turtleCanDrawByIncreasingColumnMovingEast(int increase){
        if (validatePenIsDown()){
         for (int i = 0; i < 1; i++) {

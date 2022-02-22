@@ -1,0 +1,6 @@
+package atm;
+
+public enum AtmCard {
+    INVALID_CARD, VISA_CARD, MASTERCARD, AMERICAN_EXPRESS, DISCOVERY_CARD, VALID_CARD;
+
+}
