@@ -9,9 +9,11 @@ import static turtle.PenState.*;
 
 public class TurtleTest {
     Turtle turtle;
+    String[][] array;
     @BeforeEach
     public void setUp(){
-        turtle= new Turtle();
+        array = new String[5][5];
+        turtle= new Turtle(array);
     }
     @Test
     public void turtleExist(){
@@ -88,6 +90,45 @@ public class TurtleTest {
         TurtlePosition expected = new TurtlePosition(4,4);
         assertEquals(expected, turtle.getTurtlePosition());
   }
+
+  @Test
+  public void turtleCannotGoOutOfSketchWhenMovingEast(){
+        turtle.penDown();
+      turtle.move(5);
+      assertThrows(InvalidSketchpadException.class,()-> turtle.move(5));
+  }
+@Test
+  public void turtleCannotGoOutOfSketchWhenMovingSouth(){
+        turtle.penDown();
+      turtle.move(5);
+      turtle.turnRight();
+    turtle.move(5);
+      assertThrows(InvalidSketchpadException.class,()-> turtle.move(5));
+  }
+@Test
+  public void turtleCannotGoOutOfSketchWhenMovingWest(){
+        turtle.penDown();
+      turtle.move(5);
+      turtle.turnRight();
+    turtle.move(5);
+    turtle.turnRight();
+    turtle.move(5);
+      assertThrows(InvalidSketchpadException.class,()-> turtle.move(5));
+  }
+
+  @Test
+public void turtleCannotGoOutOfSketchWhenMovingNorth(){
+        turtle.penDown();
+      turtle.move(5);
+      turtle.turnRight();
+    turtle.move(5);
+    turtle.turnRight();
+    turtle.move(5);
+    turtle.turnRight();
+    turtle.move(5);
+      assertThrows(InvalidSketchpadException.class,()-> turtle.move(5));
+  }
+
 
 
 

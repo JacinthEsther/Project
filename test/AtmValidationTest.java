@@ -109,8 +109,6 @@ public class AtmValidationTest {
      assertSame(AtmCard.INVALID_CARD, atmCheck.getAtmCard());
       }
 
-
-
     @AfterEach
     void tearDown() {
     }

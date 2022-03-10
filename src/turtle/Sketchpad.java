@@ -1,13 +1,13 @@
 package turtle;
 
 public class Sketchpad {
-    private String[][] array = new String[5][5];
+    private int [][] array;
 
-    public Sketchpad(String [] [] array){
-        for(int i=0; i<array.length; i++){
-            for(int j=0; j<array[i].length; j++){
-                this.array = array;
-            }
-        }
+    public Sketchpad(int row, int column){
+      array = new int[row][column];
+    }
+
+    public int [][] getSketchpad(){
+        return array;
     }
 }

@@ -1,12 +1,22 @@
 package turtle;
 
+import java.util.Arrays;
+
 import static turtle.Direction.*;
 
 public class Turtle {
     private Direction currentDirection = EAST ;
     private final TurtlePosition turtlePosition = new TurtlePosition(0,0);
     private final Pen biro = new Pen();
-    private final String[][] array = new String[5][5];
+    private String[][] array;
+
+    public Turtle(String[][] array){
+        for (String[] strings : array) {
+            Arrays.fill(strings, " ");
+        }
+        this.array = array;
+    }
+
 //    private Sketchpad sketchpad = new Sketchpad(array);
 
     public Pen getPen() {
@@ -45,12 +55,23 @@ public class Turtle {
     }
 
     private void increaseColumnBy(int increase) {
-        turtleCanDrawByIncreasingColumnMovingEast(increase);
-        turtlePosition.setColumn(turtlePosition.getColumn() + increase);
+        if(!(turtlePosition.getColumn() + increase > array.length)) {
+
+            turtleCanDrawByIncreasingColumnMovingEast(increase);
+            turtlePosition.setColumn(turtlePosition.getColumn() + increase);
+        }
+        else{
+            throw new InvalidSketchpadException("Turtle has fallen off the cliff");
+        }
     }
      private void decreaseColumnBy(int decrease) {
+         if(!(turtlePosition.getColumn() - decrease < 0)) {
          turtleCanDrawByDecreasingColumnMovingWest(decrease);
          turtlePosition.setColumn(turtlePosition.getColumn() - decrease);
+         }
+         else{
+             throw new InvalidSketchpadException("Turtle has fallen off the cliff");
+         }
     }
 
     private void turtleCanDrawByDecreasingColumnMovingWest(int decrease) {
@@ -92,14 +113,24 @@ public class Turtle {
         return turtlePosition;
     }
     private void increaseRowBy(int increase){
+        if(!(turtlePosition.getRow() + increase > array.length)) {
         turtleCanDrawByIncreasingRowMovingSouth(increase);
         int currentFlow = turtlePosition.getRow();
         turtlePosition.setRow(currentFlow + increase);
+        }
+        else{
+            throw new InvalidSketchpadException("Turtle has fallen off the cliff");
+        }
     }
     private void decreaseRowBy(int decrease){
-        turtleCanDrawByDecreasingRowWhileMovingNorth(decrease);
-        int currentFlow = turtlePosition.getRow();
-        turtlePosition.setRow(currentFlow - decrease);
+        if(!(turtlePosition.getRow() - decrease < 0)) {
+            turtleCanDrawByDecreasingRowWhileMovingNorth(decrease);
+            int currentFlow = turtlePosition.getRow();
+            turtlePosition.setRow(currentFlow - decrease);
+        }
+        else{
+                throw new InvalidSketchpadException("Turtle has fallen off the cliff");
+            }
     }
 
     private void turtleCanDrawByDecreasingRowWhileMovingNorth(int decrease) {
