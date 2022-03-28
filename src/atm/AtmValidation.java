@@ -21,7 +21,6 @@ public class AtmValidation {
         else if (number.charAt(0) == '3' && number.charAt(1) == '7'){
             return this.cardType = AtmCard.AMERICAN_EXPRESS;}
         else if (number.charAt(0) == '6'){ return this.cardType = AtmCard.DISCOVERY_CARD;}
-//        else if (sumTotal% 10 == 0){return this.cardType = AtmCard.VALID_CARD;}
         else return this.cardType = AtmCard.INVALID_CARD;
     }
     private static void validate(String number) {
@@ -31,7 +30,7 @@ public class AtmValidation {
     }
     public  void validateFirstDigit(String number) {
             if (Character.getNumericValue(number.charAt(0)) != 6){
-//                System.out.println(Character.getNumericValue(number.charAt(0)));
+
                 throw new IllegalArgumentException("Invalid atm card");
             }
             else if (Character.getNumericValue(number.charAt(0)) != 4){
