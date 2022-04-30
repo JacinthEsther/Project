@@ -15,6 +15,7 @@ public class Diary {
 //        }
         this.password = password;
         this.ownerName = ownerName;
+
     }
 
     public String getOwnerName() {

@@ -34,9 +34,6 @@ public class AtmValidationTest {
 
     @Test
     public void validateFirstDigit(){
-//        AtmValidation atmCheck = new AtmValidation("1234587345699999")
-//        AtmValidation atmCheck;
-//        assertEquals("12345873456678", atmCheck.getNumber());
         try{ atmCheck.validateFirstDigit("1234587345699999");}
         catch(IllegalArgumentException e){
             assertEquals(IllegalArgumentException.class,e.getClass());
